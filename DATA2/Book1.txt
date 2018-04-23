@@ -1,0 +1,38 @@
+kode	nama	alamat	telepon
+12201	 CIHAMPELAS 	 Jl. Cihampelas No.9 Bandung 	022-4266580
+12206	 BUAH BATU 	 Jl. Buah Batu No.186A Bandung 	022-7322896
+12207	 SINGAPARNA 	 Jl. Raya Timur No.1285 Cikirai Singaparna 	0265-544664
+12204	 UJUNG BERUNG 	 Jl. Raya Ujung Berung No.40 Bandung 	022-7810672
+12205	 GARUT 	 Jl. Papandayan No.13 Maktal Garut 	0262-540077
+12203	 TASIKMALAYA 	 Jl. Sutisna Senjaya No.26 Tasikmalaya 	0265-313939
+12208	 SUBANG 	 Jl. Otto Iskandardinata No.1 Subang (Jl. Otista No. 1 Subang) 	0260-414015
+12210	 PURWAKARTA 	 Jl. Veteran No. 22 Purwakarta 	0264-210861
+12211	 CIANJUR 	 Jl. Ir.H.Juanda No. 37 – Selakopi, Cianjur 	0263-267594
+12212	 DAGO - UNPAD 	 Jl. Ir. Juanda No. 247 Bandung 	022-20454198
+13301	 YOGYAKARTA  	 Jl. Kaliurang KM 6 No.48 Yogyakarta 	0274-886981
+13303	 SURAKARTA / SOLO 	 Jl. Laksda Adi Sucipto No.70 Solo 	0271-727886
+13304	 SEMARANG 	 Jl. Pemuda No.135 Semarang 	024-86577919
+14001	 SURABAYA - DARMO 	 Jl. Raya Darmo No.6 Surabaya 	031-5622730
+14002	 BANGKALAN 	 Jl. Joko Tole No.5 Bangkalan Madura 	031-3061773
+14005	 MALANG 	 Jl. Kawi No. 22A  Malang 	0341-362301
+14006	 SURABAYA - DARMAWANGSA 	 Jl. Darmawangsa No. 24 Surabaya 	031-5043356
+16001	 DENPASAR 	 Jl. Diponegoro No.125 Denpasar Bali 	0361-239523
+16002	 MAKASSAR - AHMAD YANI 	 Jl. Ahmad Yani No. 17 - 19 Makassar 	0411-3612383
+16003	 BANJARMASIN 	 Jl. Let. Jend S.Parman No.42 Banjarmasin 	0511-3363211
+16004	 BANJARBARU 	 Jl. Achmad Yani Km. 34 No. 10 Banjarmasin 	0511-4772141
+16005	 MANADO 	 Jl. Lumimuut  No. 12 Tikala Manado 	0431-855333
+16006	 PANCARAN KASIH 	 Jl. Sam Ratulangi Manado 	0431-866972
+16008	 PONTIANAK 	 Jl. Prof.M.Yamin No.A-7 Kelurahan Sungai Bangkong, Kota Baru, Pontianak 	0561-583536
+16007	 KUPANG 	 Jl. Dr. Moh. Hatta No. 38 Kupang 	-
+16010	 MAKASSAR - HASANUDDIN 	 Jl. Hasanuddin No. 46 Makassar 	-
+16012	 MAKASSAR - CENDRAWASIH 	 Balai Diklat Propinsi Sulawesi Selatan Jl. Cendrawasih No. 233 Makassar 	0411-3650151
+16009	 SAMARINDA 	 Jl. KH Abul Hasan No. 1 Samarinda 	0541-745530
+19901	 BATAM  	 Jl. Imam Bonjol kampung Utama Batam 	0778-453602
+19902	 BENGKULU  	 Jl. Jati No.3 Bengkulu 	0736-347970
+19903	 LUBUK LINGGAU 	 Jl. Garuda No.18 Lubuk Linggau  	0733-323761
+19904	 LAMPUNG 	 Jl. Gajah Mada No. 88 CC Tjg. Karang Timur, Bandar Lampung 	0721-269901
+19909	 PALEMBANG 	  Jl. Jend. Sudirman No. 941 Km. 3.5 Kelurahan D-III Kec. Ilir Timur I Palembang 	0711-353592
+19910	 JAMBI 	 Jl. Gatot Subroto No. 44 Kel. Sungai Asam Kec. Pasar Jambi, Jambi 	0741-24159
+20001	 MEDAN 	 Jl. Palang Merah No.32 Medan 	061-4551679
+11117	CIBUBUR	Ruko CW 1 - 2 Citra Grand, Cibubur	021-21384813
+16013	AMBON	Jl. Diponegoro No. 66 Ambon

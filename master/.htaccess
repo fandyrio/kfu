@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+
+
+RewriteRule ^profil-(.*)-(.*)\.html$ ?modul=readprofil&id=$1 [L]
+
+RewriteRule ^situngkir-(.*)-(.*)\.html$ ?modul=readpomparan&id=$1 [L]
+
+RewriteRule ^artikel-(.*)-(.*)\.html$ ?modul=readterkait&id=$1&k=$2 [L]
+
+RewriteRule ^event-(.*)-(.*)\.html$ ?modul=readterkait&id=$1&k=$2 [L]
+
+RewriteRule ^komentar-(.*)-(.*)\.html$ ?modul=readterkait&id=$1&k=$2&submit_komentar [L]
+
+RewriteRule ^foto-(.*)-(.*)\.html$ ?modul=view_foto&id=$1&n=$2 [L]
+
+
+
+Options All -Indexes
+</IfModule>

@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^client$ login.php
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+RewriteRule ^home$ media.php?penjamin=home&modul=home [QSA,L]
+RewriteRule ^404$ media.php?module=404 [QSA,L]
+
+
+RewriteRule ^mcu-penawaran$ media.php?module=penawaran [QSA,L]
+RewriteRule ^view-mcu-penawaran-([0-9a-zA-Z-]+)$ media.php?module=penawaran&act=view&id=$1 [QSA,L]
+RewriteRule ^permintaan-revisi-mcu-penawaran$ content/mcu/penawaran/aksi_penawaran.php?module=penawaran&act=revisi [QSA,L]
+RewriteRule ^tolak-mcu-penawaran$ content/mcu/penawaran/aksi_penawaran.php?module=penawaran&act=tolak [QSA,L]
+RewriteRule ^terima-mcu-penawaran$ content/mcu/penawaran/aksi_penawaran.php?module=penawaran&act=terima [QSA,L]
+RewriteRule ^aksi-mcu-penawaran$ content/mcu/penawaran/aksi_penawaran.php?module=penawaran&act=aksisimpan [QSA,L]
+
+
+RewriteRule ^mcu-jadwal$ media.php?module=jadwal [QSA,L]
+RewriteRule ^view-mcu-jadwal-([0-9a-zA-Z-]+)$ media.php?module=jadwal&act=view&id=$1 [QSA,L]
+
+
+RewriteRule ^billing$ media.php?module=billing [QSA,L]
+RewriteRule ^view-billing-([0-9a-zA-Z-]+)$ media.php?module=biling&act=view&id=$1 [QSA,L]
+
+
+RewriteRule ^billing-klaim$ media.php?module=klaim [QSA,L]
+RewriteRule ^view-billing-klaim-([0-9a-zA-Z-]+)$ media.php?module=klaim&act=view&id=$1 [QSA,L]
+
+RewriteRule ^billing-invoice$ media.php?module=invoice [QSA,L]
+RewriteRule ^view-billing-invoice-([0-9a-zA-Z-]+)$ media.php?module=invoice&act=view&id=$1 [QSA,L]
+
+RewriteRule ^billing-pembayaran$ media.php?module=pembayaran [QSA,L]
+RewriteRule ^view-billing-pembayaran-([0-9a-zA-Z-]+)$ media.php?module=pembayaran&act=view&id=$1 [QSA,L]
+
+
+Options All -Indexes
+
+</IfModule>

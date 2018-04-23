@@ -1,0 +1,62 @@
+ SELECT inv_fifo.*, inv_info_supplier.nama AS SuppName, 
+                         grn_batch.qty AS qtyin, grn_ln.grand_total / grn_ln.qty * grn_batch.qty AS CostIn, grn_batch.no_batch,  grn_batch.id_grn_ln,
+                          grn_hdr.doc_date, grn_hdr.id_unit, grn_hdr.id_departemen, grn_batch.expired_date, grn_batch.manufacdate
+FROM inv_fifo
+LEFT JOIN
+                         grn_batch ON (grn_batch.id_grn_hdr = inv_fifo.id_hdr) AND (grn_batch.id_grn_ln = inv_fifo.id_ln) AND 
+                         (grn_batch.id_grn_batch = inv_fifo.id_batch) LEFT JOIN
+                         grn_ln ON grn_ln.id_grn_ln = inv_fifo.id_ln AND grn_ln.id_grn_hdr = inv_fifo.id_hdr LEFT JOIN
+                         grn_hdr ON grn_hdr.id = inv_fifo.id_hdr LEFT JOIN
+                         inv_info_supplier ON grn_hdr.id_supplier = inv_info_supplier.id
+WHERE        inv_fifo.doc_type = 'GRN' AND grn_batch.qty - qty_out > 0 AND grn_hdr.status <> 'D'
+UNION
+SELECT inv_fifo.*, '' AS suppname, stok_trf_batch.qty AS qtyin, 
+                         (CASE WHEN stok_trf_batch.total_cost > 0 THEN stok_trf_batch.total_cost ELSE ((stok_trf_ln.total_cost / stok_trf_ln.qty) * stok_trf_batch.qty) END) AS costin, 
+                         stok_trf_batch.no_batch, stok_trf_ln.id_ln, stok_trf_hdr.doc_date, stok_trf_hdr.ke_unit AS UnitID, stok_trf_hdr.ke_departemen AS deptid,  stok_trf_batch.tgl_expired, 
+                         stok_trf_batch.tgl_manufac
+FROM inv_fifo LEFT JOIN
+                         stok_trf_batch ON (stok_trf_batch.id_trf_hdr = inv_fifo.id_hdr) AND (stok_trf_batch.id_ln = inv_fifo.id_ln) AND (stok_trf_batch.id_trf_batch = inv_fifo.id_batch) 
+                         LEFT JOIN
+                         stok_trf_ln ON stok_trf_ln.id_ln = inv_fifo.id_ln AND stok_trf_ln.id_trf_hdr = inv_fifo.id_hdr LEFT JOIN
+                         stok_trf_hdr ON stok_trf_hdr.id = inv_fifo.id_hdr
+WHERE inv_fifo.doc_type = 'TRF' AND stok_trf_hdr.proses_by > 0 AND stok_trf_batch.qty - qty_out > 0 
+
+UNION
+
+SELECT        inv_fifo.*, '' AS SuppName, stok_buka_batch.qty AS qtyin, stok_buka_qty.totalcost / stok_buka_qty.qty * stok_buka_batch.qty AS costin, 
+                         stok_buka_batch.no_batch, stok_buka_qty.id_buka_stok_qty, stok_buka_hdr.doc_date, stok_buka_hdr.id_unit, stok_buka_hdr.id_departemen, 
+                         stok_buka_batch.tgl_expired, stok_buka_batch.tgl_manufac
+FROM            inv_fifo LEFT JOIN
+                         stok_buka_batch ON (stok_buka_batch.id_stok_buka_hdr = inv_fifo.id_hdr) AND (stok_buka_batch.id_stok_buka_qty = inv_fifo.id_ln) AND 
+                         (stok_buka_batch.id_stok_buka_qty  = inv_fifo.id_ln) LEFT JOIN
+                         stok_buka_qty ON stok_buka_qty.id_buka_stok_qty = inv_fifo.id_ln 
+						 AND stok_buka_qty.id_buka_stok_hdr = inv_fifo.id_hdr LEFT JOIN
+                         stok_buka_hdr ON stok_buka_hdr.id = inv_fifo.id_hdr
+WHERE        inv_fifo.doc_type = 'OPN' AND stok_buka_batch.qty - qty_out > 0 AND stok_buka_hdr.status <> 'D'
+
+
+
+UNION
+
+SELECT        inv_fifo.*, '' AS SuppName, stok_adj_batch.qty AS qtyin, stok_adj_batch.total_harga AS costin, stok_adj_batch.no_batch, stok_adj_ln.id_adj_ln, stok_adj_hdr.doc_date, 
+                         stok_adj_hdr.id_unit, stok_adj_hdr.id_departemen, stok_adj_batch.expired_date, stok_adj_batch.manufacdate
+FROM            inv_fifo LEFT JOIN
+                         stok_adj_batch ON (stok_adj_batch.id_adj_hdr = inv_fifo.id_hdr) AND (stok_adj_batch.id_adj_batch = inv_fifo.id_batch) AND 
+                         (stok_adj_batch.id = inv_fifo.id_batch) LEFT JOIN
+                         stok_adj_ln ON (stok_adj_ln.id_adj_hdr = inv_fifo.id_hdr) AND (stok_adj_ln.id_adj_ln = inv_fifo.id_ln) LEFT JOIN
+                         stok_adj_hdr ON (stok_adj_hdr.id = inv_fifo.id_hdr)
+WHERE        inv_fifo.doc_type = 'ADJ' AND (stok_adj_batch.qty - qty_out > 0) AND (stok_adj_batch.qty > 0) AND stok_adj_hdr.status <> 'D'
+
+UNION
+
+SELECT        inv_fifo.*, '' AS SuppName, stok_take_batch.qty AS qtyin, stok_take_batch.total_harga AS costin, stok_take_batch.no_batch, stok_take_qty.id_stok_take_qty, 
+                         stok_take_hdr.doc_date, stok_take_hdr.id_unit, stok_take_hdr.id_departemen, stok_take_batch.tgl_expired as expired_date, 
+                         stok_take_batch.tgl_manufac as manufacdate
+FROM            inv_fifo LEFT JOIN
+                         stok_take_batch ON (stok_take_batch.id_stok_take_hdr = inv_fifo.id_hdr) AND (stok_take_batch.id_stok_take_qty = inv_fifo.id_ln) AND 
+                         (stok_take_batch.id_stok_take_batch = inv_fifo.id_batch) LEFT JOIN
+                         stok_take_qty ON (stok_take_qty.id_stok_take_hdr = inv_fifo.id_hdr) AND (stok_take_qty.id_stok_take_qty = inv_fifo.id_ln) LEFT JOIN
+                         stok_take_hdr ON (stok_take_hdr.id = inv_fifo.id_hdr)
+WHERE        inv_fifo.doc_type = 'STT' AND (stok_take_batch.qty - qty_out > 0) AND (stok_take_batch.qty > 0) AND stok_take_hdr.status <> 'D'
+
+

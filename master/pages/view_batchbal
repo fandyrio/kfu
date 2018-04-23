@@ -1,0 +1,50 @@
+SELECT        UnitID, DeptID, BrandName, SUM(AvailableQty - reserved) AS StockBal, BGUID, StGUID, DocGUID
+FROM            (SELECT DISTINCT 
+                                                    v.UnitID, v.DeptID, v.InventoryGUID, v.DocGUID, v.StGUID, v.BGUID, B.BrandName, SUM(COALESCE (F.QtyOut, 0)) AS reserved, SUM(v.QtyIn - v.QtyOut) 
+                                                    AS AvailableQty
+                          FROM            dbo.v_InventoryAvailableBatch AS v LEFT OUTER JOIN
+                                                    dbo.Inventory AS I ON I.InventoryGUID = v.InventoryGUID LEFT OUTER JOIN
+                                                    dbo.InventoryBrand AS B ON B.BrandGUID = I.BrandGUID LEFT OUTER JOIN
+                                                    dbo.InventoryFIFOReserve AS F ON F.FIFODocGUID = v.DocGUID AND F.FIFOSTGUID = v.StGUID AND F.FIFOBGUID = v.BGUID
+                          GROUP BY v.UnitID, v.DeptID, v.InventoryGUID, v.DocGUID, v.StGUID, v.BGUID, B.BrandName) AS A
+GROUP BY UnitID, DeptID, BrandName, BGUID, StGUID, DocGUID
+
+
+
+
+create view view_inventorybatchbalance as
+SELECT        id_unit, id_departemen, nama, SUM(AvailableQty - reserved) AS StockBal, id_batch, id_ln, id_hdr
+FROM            (SELECT DISTINCT 
+                                                    v.id_unit, v.id_departemen, v.id_inv, v.id_hdr, v.id_ln, v.id_batch, B.nama,  
+
+                                                    SUM(COALESCE (F.qty_out, 0)) AS reserved, SUM(v.qtyin - v.qty_out) 
+                                                    AS AvailableQty
+
+                          FROM   view_inventoryavailablebatch AS v LEFT OUTER JOIN
+                                                    inv_inventori AS I ON I.id = v.id_inv LEFT OUTER JOIN
+                                                    inv_nama_brand AS B ON B.id = I.id_brand 
+
+                                                    LEFT OUTER JOIN
+                                                    inv_fiforeserve AS F ON F.dari_id_hdr = v.id_hdr AND F.dari_id_ln = v.id_ln AND F.dari_id_batch = v.id_batch
+                                                    
+                          GROUP BY v.id_unit, v.id_departemen, v.id_inv, v.id_hdr, v.id_ln, v.id_batch, B.nama) AS A
+GROUP BY id_unit, id_departemen, nama, id_batch, id_ln, id_hdr
+
+create view view_inventoribatchbalance as
+SELECT  T1.id_unit, T1.id_departemen, T1.nama ,SUM(T1.AvailableQty - COALESCE((reserved), 0)) AS StockBal, T1.id_batch, T1.id_ln, T1.id_hdr
+    FROM
+      (SELECT DISTINCT  id_unit,id_departemen, B.nama, id_inv, id_hdr, id_ln, id_batch, SUM(qtyin - qty_out)  AS AvailableQty
+    FROM   view_inventoriavailablebatch left outer join
+         inv_inventori AS I ON I.id = view_inventoriavailablebatch.id_inv LEFT OUTER JOIN
+                                                    inv_nama_brand AS B ON B.id = I.id_brand
+        GROUP BY id_unit, id_departemen,id_inv,id_hdr, id_ln, id_batch, nama
+      
+      ) T1
+           FULL OUTER JOIN
+      (SELECT DISTINCT SUM(COALESCE (qty_out, 0)) AS reserved, dari_id_hdr,dari_id_ln, dari_id_batch   from inv_fiforeserve 
+        group by dari_id_hdr,dari_id_ln, dari_id_batch) T2
+            ON T1.id_hdr = T2.dari_id_hdr AND T1.id_ln = T2.dari_id_ln AND T1.id_batch = T2.dari_id_batch
+GROUP BY T1.id_unit, T1.id_departemen,T1.nama , T1.id_batch, T1.id_ln, T1.id_hdr 
+
+                        
+                        

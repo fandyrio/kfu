@@ -1,0 +1,90 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+RewriteRule ^home$ media.php?module=home [QSA,L]
+RewriteRule ^404$ media.php?module=404 [QSA,L]
+
+
+RewriteRule ^urusan$ media.php?module=urusan [QSA,L]
+RewriteRule ^tambah-urusan$ content/urusan/aksi_urusan.php?module=urusan&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-urusan$ content/urusan/aksi_urusan.php?module=urusan&act=input [QSA,L]
+RewriteRule ^edit-urusan$ content/urusan/aksi_urusan.php?module=urusan&act=edit [QSA,L]
+RewriteRule ^aksi-edit-urusan$ content/urusan/aksi_urusan.php?module=urusan&act=update [QSA,L]
+RewriteRule ^aksi-hapus-urusan-([0-9a-zA-Z-]+)$ content/urusan/aksi_urusan.php?module=urusan&act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^sumberdana$ media.php?module=sumberdana [QSA,L]
+RewriteRule ^tambah-sumberdana$ content/sumberdana/aksi_sumberdana.php?module=sumberdana&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-sumberdana$ content/sumberdana/aksi_sumberdana.php?module=sumberdana&act=input [QSA,L]
+RewriteRule ^edit-sumberdana$ content/sumberdana/aksi_sumberdana.php?module=sumberdana&act=edit [QSA,L]
+RewriteRule ^aksi-edit-sumberdana$ content/sumberdana/aksi_sumberdana.php?module=sumberdana&act=update [QSA,L]
+RewriteRule ^aksi-hapus-sumberdana-([0-9a-zA-Z-]+)$ content/sumberdana/aksi_sumberdana.php?module=sumberdana&act=delete&id=$1 [QSA,L]
+
+
+
+RewriteRule ^organisasi$ media.php?module=organisasi [QSA,L]
+RewriteRule ^tambah-organisasi$ content/organisasi/aksi_organisasi.php?module=organisasi&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-organisasi$ content/organisasi/aksi_organisasi.php?module=organisasi&act=input [QSA,L]
+RewriteRule ^edit-organisasi$ content/organisasi/aksi_organisasi.php?module=organisasi&act=edit [QSA,L]
+RewriteRule ^aksi-edit-organisasi$ content/organisasi/aksi_organisasi.php?module=organisasi&act=update [QSA,L]
+RewriteRule ^aksi-hapus-organisasi-([0-9a-zA-Z-]+)$ content/organisasi/aksi_organisasi.php?module=organisasi&act=delete&id=$1 [QSA,L]
+RewriteRule ^view-organisasi-([0-9a-zA-Z-]+)$ media.php?module=organisasi&act=view&id=$1 [QSA,L]
+RewriteRule ^tambah-suborganisasi$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=tambahsuborganisasi [QSA,L]
+RewriteRule ^aksi-tambah-suborganisasi$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=inputsuborganisasi [QSA,L]
+RewriteRule ^edit-suborganisasi$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=editsuborganisasi [QSA,L]
+RewriteRule ^aksi-edit-suborganisasi$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=updatesuborganisasi [QSA,L]
+RewriteRule ^aksi-hapus-suborganisasi-([0-9a-zA-Z-]+)$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=deletesuborganisasi&id=$1 [QSA,L]
+
+
+RewriteRule ^kegiatan$ media.php?module=kegiatan [QSA,L]
+RewriteRule ^tambah-kegiatan$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-kegiatan$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=input [QSA,L]
+RewriteRule ^edit-kegiatan$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=edit [QSA,L]
+RewriteRule ^aksi-edit-kegiatan$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=update [QSA,L]
+RewriteRule ^aksi-hapus-kegiatan-([0-9a-zA-Z-]+)$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=delete&id=$1 [QSA,L]
+RewriteRule ^view-kegiatan-([0-9a-zA-Z-]+)$ media.php?module=kegiatan&act=view&id=$1 [QSA,L]
+RewriteRule ^tambah-kegiatan1$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=tambahkegiatan1 [QSA,L]
+RewriteRule ^aksi-tambah-kegiatan1$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=inputkegiatan1 [QSA,L]
+RewriteRule ^edit-kegiatan1$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=editkegiatan1 [QSA,L]
+RewriteRule ^aksi-edit-kegiatan1$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=updatekegiatan1 [QSA,L]
+RewriteRule ^aksi-hapus-kegiatan1-([0-9a-zA-Z-]+)$ content/kegiatan/aksi_kegiatan.php?module=kegiatan&act=deletekegiatan1&id=$1 [QSA,L]
+
+
+RewriteRule ^halaman$ media.php?module=halaman [QSA,L]
+RewriteRule ^edit-halaman$ content/halaman/aksi_halaman.php?module=halaman&act=edit [QSA,L]
+RewriteRule ^edit-halaman-([0-9a-zA-Z-]+)$ media.php?module=halaman&act=edit&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-halaman$ content/halaman/aksi_halaman.php?module=halaman&act=update [QSA,L]
+
+
+RewriteRule ^sistem$ media.php?module=sistem [QSA,L]
+RewriteRule ^edit-sistem$ content/sistem/aksi_sistem.php?module=sistem&act=edit [QSA,L]
+RewriteRule ^aksi-edit-sistem$ content/sistem/aksi_sistem.php?module=sistem&act=update [QSA,L]
+
+
+RewriteRule ^profile$ media.php?module=profile [QSA,L]
+RewriteRule ^edit-profile$ content/profile/aksi_profile.php?module=profile&act=edit [QSA,L]
+RewriteRule ^aksi-edit-profile$ content/profile/aksi_profile.php?module=profile&act=update [QSA,L]
+
+RewriteRule ^tindakan$ media.php?content=tindakan [QSA,L]
+RewriteRule ^lab$ media.php?content=analysis [QSA,L]
+RewriteRule ^group$ media.php?content=analysis_group [QSA,L]
+RewriteRule ^dokter$ media.php?content=dokter [QSA,L]
+
+RewriteRule ^karyawan$ media.php?content=karyawan [QSA,L]
+RewriteRule ^paket$ media.php?content=paket [QSA,L]
+
+RewriteRule ^akses$ media.php?content=akses [QSA,L]
+RewriteRule ^user$ media.php?content=users [QSA,L]
+RewriteRule ^menu$ media.php?content=menu [QSA,L]
+RewriteRule ^level$ media.php?content=level [QSA,L]
+RewriteRule ^perusahaan$ media.php?content=perusahaan [QSA,L]
+RewriteRule ^commision$ media.php?content=commision_group [QSA,L]
+
+
+Options All -Indexes
+
+</IfModule>

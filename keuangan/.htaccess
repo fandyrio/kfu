@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^client$ login.php
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+RewriteRule ^home$ media.php?module=home [QSA,L]
+RewriteRule ^404$ media.php?module=404 [QSA,L]
+
+
+Options All -Indexes
+
+</IfModule>

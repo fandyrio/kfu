@@ -1,0 +1,13 @@
+create view view_inventorystokbalbyunit as
+SELECT id_unit, id_inv, nama, SUM(AvailableQty - reserved) AS StockBal
+FROM            (SELECT DISTINCT 
+                                                    v.id_unit, v.id_departemen, v.id_inv, v.id_hdr, v.id_ln, v.id_batch, B.nama, SUM(COALESCE (F.qty_out, 0)) AS reserved, SUM(v.qtyin - v.qty_out) 
+                                                    AS AvailableQty
+                          FROM            view_inventoryavailablebatch AS v LEFT OUTER JOIN
+                                                    inv_inventori AS I ON I.id = v.id_inv LEFT OUTER JOIN
+                                                    inv_nama_brand AS B ON B.id = I.id_brand LEFT OUTER JOIN
+                                                    inv_fiforeserve AS F ON F.dari_id_hdr = v.id_hdr AND F.dari_id_ln = v.id_ln AND F.dari_id_batch = v.id_batch
+
+                                                    
+                          GROUP BY v.id_unit, v.id_departemen, v.id_inv, v.id_hdr, v.id_ln, v.id_batch, B.nama) AS A
+		GROUP BY id_unit, id_inv, nama

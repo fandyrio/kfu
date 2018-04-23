@@ -1,0 +1,1 @@
+$("#list_invoice").load("media.php?ajax=pembayaran_list_invoice");

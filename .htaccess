@@ -1,0 +1,534 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^client$ login.php
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+
+RewriteRule ^monitor/login$ login_monitoring.php
+RewriteRule ^monitor/cek-login$ cek_login.php
+
+RewriteRule ^home$ media.php?module=home [QSA,L]
+
+RewriteRule ^404$ media.php?module=404 [QSA,L]
+
+RewriteRule ^panggil-antrian$ media.php?module=panggil_antrian [QSA,L]
+RewriteRule ^data-provinsi$ data/provinsi.php [QSA,L]
+RewriteRule ^data-kabupaten$ data/kabupaten.php [QSA,L]
+RewriteRule ^data-kecamatan$ data/kecamatan.php [QSA,L]
+RewriteRule ^data-kelurahan$ data/kelurahan.php [QSA,L]
+RewriteRule ^data-dokter$ data/dokter.php [QSA,L]
+RewriteRule ^data-lantai$ data/lantai.php [QSA,L]
+RewriteRule ^data-ruangan$ data/ruangan.php [QSA,L]
+RewriteRule ^data-bed$ data/bed.php [QSA,L]
+RewriteRule ^data-paket$ data/paket.php [QSA,L]
+
+RewriteRule ^cetak_queue$ queue/cetak_antrian [QSA,L]
+
+
+RewriteRule ^hitung-usia$ content/pendaftaran/hitung_usia.php [QSA,L]
+
+RewriteRule ^perusahaan$ media.php?module=perusahaan [QSA,L]
+RewriteRule ^auth-user$ media.php?content=users [QSA,L]
+RewriteRule ^pegawai$ media.php?content=karyawan [QSA,L]
+
+RewriteRule ^mcu$ media.php?content=mcu [QSA,L]
+
+RewriteRule ^pendaftaran$ media.php?module=pendaftaran [QSA,L]
+RewriteRule ^getAllReservasi$ media.php?module=getAllReservasi [QSA,L]
+RewriteRule ^pendaftaran-ambil-data-pasien$ content/pendaftaran/ambil_data_pasien.php [QSA,L]
+
+RewriteRule ^pendaftaran-ambil-pasien-keluarga$ media.php?module=pendaftaran&act=ambilpasienkeluarga [QSA,L]
+RewriteRule ^aksi-tambah-pasien-keluarga$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-keluarga$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-keluarga$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-keluarga$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-keluarga$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=delete [QSA,L]
+
+RewriteRule ^aksi-tambah-pasien-keluarga2$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=input2 [QSA,L]
+RewriteRule ^form-tambah-pasien-keluarga2$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=inputform2 [QSA,L]
+RewriteRule ^edit-pasien-keluarga2$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=edit2 [QSA,L]
+RewriteRule ^aksi-edit-pasien-keluarga2$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=update2 [QSA,L]
+RewriteRule ^aksi-hapus-pasien-keluarga2$ content/pendaftaran/aksi_keluarga_pasien.php?module=keluarga&act=delete2 [QSA,L]
+
+
+RewriteRule ^aksi-tambah-pasien-penjamin$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-penjamin$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-penjamin$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-penjamin$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-penjamin$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=delete [QSA,L]
+
+RewriteRule ^aksi-tambah-pasien-baru$ content/pendaftaran/aksi_pasien.php?module=pasien&act=input [QSA,L]
+
+RewriteRule ^aksi-tambah-pasien-penjamin2$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=input2 [QSA,L]
+RewriteRule ^form-tambah-pasien-penjamin2$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=inputform2 [QSA,L]
+RewriteRule ^edit-pasien-penjamin2$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=edit2 [QSA,L]
+RewriteRule ^aksi-edit-pasien-penjamin2$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=update2 [QSA,L]
+RewriteRule ^aksi-hapus-pasien-penjamin2$ content/pendaftaran/aksi_penjamin_pasien.php?module=penjamin&act=delete2 [QSA,L]
+
+
+RewriteRule ^antrian$ media.php?module=antrian [QSA,L]
+RewriteRule ^data-antrian$ content/antrian/data_antrian.php [QSA,L]
+RewriteRule ^edit-antrian-([0-9a-zA-Z-]+)$ media.php?module=antrian&act=edit&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-antrian$ content/antrian/aksi_antrian.php?module=antrian&act=input [QSA,L]
+RewriteRule ^aksi-edit-antrian$ content/antrian/aksi_antrian.php?module=antrian&act=update [QSA,L]
+RewriteRule ^lama-antrian$ content/antrian/aksi_antrian.php?module=antrian&act=lama [QSA,L]
+RewriteRule ^getPolyDoctor$ content/antrian/aksi_antrian.php?module=antrian&act=getPolyDoctor [QSA,L]
+RewriteRule ^cetak-antrian$ content/antrian/cetak_antrian.php [QSA,L]
+
+RewriteRule ^hapus-antrian-([0-9a-zA-Z-]+)$ content/antrian/aksi_antrian.php?module=antrian&act=delete&id=$1 [QSA,L]
+RewriteRule ^selesai-antrian-([0-9a-zA-Z-]+)$ content/antrian/aksi_antrian.php?module=antrian&act=selesai&id=$1 [QSA,L]
+
+
+RewriteRule ^pasien$ media.php?module=pasien [QSA,L]
+RewriteRule ^pasien-detail-([0-9a-zA-Z-]+)$ media.php?module=pasien&act=detail&no_rm=$1 [QSA,L]
+RewriteRule ^pasien-data-info$ content/pasien/pasien_info.php [QSA,L]
+RewriteRule ^edit-pasien-([0-9a-zA-Z-]+)$ media.php?module=pasien&act=edit&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-pasien$ content/pasien/aksi_pasien.php?module=pasien&act=update [QSA,L]
+RewriteRule ^hapus-pasien-([0-9a-zA-Z-]+)$ content/pasien/aksi_pasien.php?module=pasien&act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^pasien-data-kunjungan$ content/pasien/pasien_kunjungan.php [QSA,L]
+
+RewriteRule ^pasien-perhatian$ content/pasien/perhatian/pasien_perhatian.php [QSA,L]
+RewriteRule ^data-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=data_perhatian [QSA,L]
+RewriteRule ^aksi-tambah-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=inputform [QSA,L]
+RewriteRule ^action-button$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=action_button [QSA,L]
+RewriteRule ^form-edit-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=editform [QSA,L]
+RewriteRule ^aksi-edit-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=update [QSA,L]
+RewriteRule ^aksi-stop-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=stop [QSA,L]
+RewriteRule ^aksi-hapus-pasien-perhatian$ content/pasien/perhatian/aksi_perhatian_pasien.php?module=perhatian&act=delete [QSA,L]
+
+
+RewriteRule ^pasien-peringatan$ content/pasien/peringatan/pasien_peringatan.php [QSA,L]
+RewriteRule ^data-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=data_peringatan [QSA,L]
+RewriteRule ^aksi-tambah-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=editform [QSA,L]
+RewriteRule ^aksi-edit-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=update [QSA,L]
+RewriteRule ^aksi-stop-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=stop [QSA,L]
+RewriteRule ^aksi-hapus-pasien-peringatan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=delete [QSA,L]
+
+
+RewriteRule ^pasien-order$ content/pasien/order/pasien_order.php [QSA,L]
+RewriteRule ^data-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=data_order [QSA,L]
+RewriteRule ^aksi-tambah-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=update [QSA,L]
+RewriteRule ^aksi-stop-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=stop [QSA,L]
+RewriteRule ^aksi-hapus-pasien-order$ content/pasien/order/aksi_order_pasien.php?module=order&act=delete [QSA,L]
+
+
+RewriteRule ^pasien-singletest$ content/pasien/singletest/pasien_singletest.php [QSA,L]
+
+
+RewriteRule ^pasien-multitest$ content/pasien/multitest/pasien_multitest.php [QSA,L]
+
+
+RewriteRule ^pasien-nonlab$ content/pasien/nonlab/pasien_nonlab.php [QSA,L]
+
+
+RewriteRule ^pasien-mcu$ content/pasien/mcu/pasien_mcu.php [QSA,L]
+
+
+RewriteRule ^pasien-fisik$ content/pasien/fisik/pasien_fisik.php [QSA,L]
+RewriteRule ^data-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=data_fisik [QSA,L]
+RewriteRule ^aksi-tambah-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=editform [QSA,L]
+RewriteRule ^aksi-edit-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=delete [QSA,L]
+RewriteRule ^view-pasien-fisik$ content/pasien/fisik/aksi_fisik_pasien.php?module=fisik&act=view [QSA,L]
+
+
+RewriteRule ^pasien-anamnesa$ content/pasien/anamnesa/pasien_anamnesa.php [QSA,L]
+RewriteRule ^form-tambah-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=editform [QSA,L]
+RewriteRule ^view-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=delete [QSA,L]
+RewriteRule ^data-pasien-anamnesa$ content/pasien/anamnesa/aksi_anamnesa_pasien.php?module=anamnesa&act=data_anamnesa [QSA,L]
+
+
+RewriteRule ^pasien-mata$ content/pasien/mata/pasien_mata.php [QSA,L]
+RewriteRule ^form-tambah-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=editform [QSA,L]
+RewriteRule ^view-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=delete [QSA,L]
+RewriteRule ^data-pasien-mata$ content/pasien/mata/aksi_mata_pasien.php?module=mata&act=data_mata [QSA,L]
+
+
+RewriteRule ^pasien-tht$ content/pasien/tht/pasien_tht.php [QSA,L]
+RewriteRule ^form-tambah-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=editform [QSA,L]
+RewriteRule ^view-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=delete [QSA,L]
+RewriteRule ^data-pasien-tht$ content/pasien/tht/aksi_tht_pasien.php?module=tht&act=data_tht [QSA,L]
+
+
+RewriteRule ^pasien-mulut$ content/pasien/mulut/pasien_mulut.php [QSA,L]
+RewriteRule ^form-tambah-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=editform [QSA,L]
+RewriteRule ^view-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=delete [QSA,L]
+RewriteRule ^data-pasien-mulut$ content/pasien/mulut/aksi_mulut_pasien.php?module=mulut&act=data_mulut [QSA,L]
+
+
+RewriteRule ^pasien-leher$ content/pasien/leher/pasien_leher.php [QSA,L]
+RewriteRule ^form-tambah-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=editform [QSA,L]
+RewriteRule ^view-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=delete [QSA,L]
+RewriteRule ^data-pasien-leher$ content/pasien/leher/aksi_leher_pasien.php?module=leher&act=data_leher [QSA,L]
+
+
+RewriteRule ^pasien-thorax$ content/pasien/thorax/pasien_thorax.php [QSA,L]
+RewriteRule ^form-tambah-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=editform [QSA,L]
+RewriteRule ^view-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=delete [QSA,L]
+RewriteRule ^data-pasien-thorax$ content/pasien/thorax/aksi_thorax_pasien.php?module=thorax&act=data_thorax [QSA,L]
+
+
+RewriteRule ^pasien-abdomen$ content/pasien/abdomen/pasien_abdomen.php [QSA,L]
+RewriteRule ^form-tambah-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=editform [QSA,L]
+RewriteRule ^view-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=delete [QSA,L]
+RewriteRule ^data-pasien-abdomen$ content/pasien/abdomen/aksi_abdomen_pasien.php?module=abdomen&act=data_abdomen [QSA,L]
+
+
+
+RewriteRule ^pasien-rektal$ content/pasien/rektal/pasien_rektal.php [QSA,L]
+RewriteRule ^form-tambah-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=editform [QSA,L]
+RewriteRule ^view-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=delete [QSA,L]
+RewriteRule ^data-pasien-rektal$ content/pasien/rektal/aksi_rektal_pasien.php?module=rektal&act=data_rektal [QSA,L]
+
+
+
+RewriteRule ^pasien-extremitas$ content/pasien/extremitas/pasien_extremitas.php [QSA,L]
+RewriteRule ^form-tambah-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=editform [QSA,L]
+RewriteRule ^view-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=delete [QSA,L]
+RewriteRule ^data-pasien-extremitas$ content/pasien/extremitas/aksi_extremitas_pasien.php?module=extremitas&act=data_extremitas [QSA,L]
+
+
+RewriteRule ^pasien-neurologis$ content/pasien/neurologis/pasien_neurologis.php [QSA,L]
+RewriteRule ^form-tambah-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=editform [QSA,L]
+RewriteRule ^view-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=delete [QSA,L]
+RewriteRule ^data-pasien-neurologis$ content/pasien/neurologis/aksi_neurologis_pasien.php?module=neurologis&act=data_neurologis [QSA,L]
+
+
+RewriteRule ^pasien-kulit$ content/pasien/kulit/pasien_kulit.php [QSA,L]
+RewriteRule ^form-tambah-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=editform [QSA,L]
+RewriteRule ^view-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=delete [QSA,L]
+RewriteRule ^data-pasien-kulit$ content/pasien/kulit/aksi_kulit_pasien.php?module=kulit&act=data_kulit [QSA,L]
+
+
+RewriteRule ^pasien-lain$ content/pasien/lain/pasien_lain.php [QSA,L]
+RewriteRule ^form-tambah-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=editform [QSA,L]
+RewriteRule ^view-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=view [QSA,L]
+RewriteRule ^aksi-tambah-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=input [QSA,L]
+RewriteRule ^aksi-edit-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=delete [QSA,L]
+RewriteRule ^data-pasien-lain$ content/pasien/lain/aksi_lain_pasien.php?module=lain&act=data_lain [QSA,L]
+
+
+RewriteRule ^keuangan-customer-billing$ media.php?module=keuangan_customer_billing [QSA,L]
+RewriteRule ^keuangan-customer-billing-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_billing&id_pasien=$1 [QSA,L]
+RewriteRule ^edit-transaksi-invoice-detail$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=edit [QSA,L]
+RewriteRule ^aksi-edit-transaksi-invoice-detail$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=update [QSA,L]
+RewriteRule ^hapus-transaksi-invoice-detail-([0-9a-zA-Z-]+)$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=delete&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-transaksi-invoice-detail$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=input [QSA,L]
+RewriteRule ^aksi-tambah-tindakan-transaksi$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=inputtindakan [QSA,L]
+RewriteRule ^aksi-tambah-paket-transaksi$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=inputpaket [QSA,L]
+RewriteRule ^aksi-tambah-billing$ content/keuangan/customer/billing/aksi_billing.php?module=keuangan_customer_billing&act=input [QSA,L]
+
+
+RewriteRule ^keuangan-customer-klaim$ media.php?module=keuangan_customer_klaim [QSA,L]
+RewriteRule ^tambah-keuangan-customer-klaim$ media.php?module=keuangan_customer_klaim&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-keuangan-customer-klaim$ content/keuangan/customer/klaim/aksi_klaim.php?module=keuangan_customer_klaim&act=input [QSA,L]
+RewriteRule ^edit-keuangan-customer-klaim-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_klaim&act=edit&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-keuangan-customer-klaim$ content/keuangan/customer/klaim/aksi_klaim.php?module=keuangan_customer_klaim&act=update [QSA,L]
+RewriteRule ^hapus-keuangan-customer-klaim-([0-9a-zA-Z-]+)$ content/keuangan/customer/klaim/aksi_klaim.php?module=keuangan_customer_klaim&act=delete&id=$1 [QSA,L]
+
+RewriteRule ^keuangan-customer-invoice$ media.php?module=keuangan_customer_invoice [QSA,L]
+RewriteRule ^view-keuangan-customer-invoice-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_invoice&act=view&no_invoice=$1&id=$2 [QSA,L]
+RewriteRule ^cetak-keuangan-customer-invoice-([0-9a-zA-Z-]+)$ content/keuangan/customer/invoice/cetak_invoice.php?no_invoice=$1 [QSA,L]
+RewriteRule ^edit-keuangan-customer-invoice$ content/keuangan/customer/invoice/aksi_invoice.php?module=keuangan_customer_invoice&act=edit [QSA,L]
+RewriteRule ^aksi-edit-keuangan-customer-invoice$ content/keuangan/customer/invoice/aksi_invoice.php?module=keuangan_customer_invoice&act=update [QSA,L]
+
+
+RewriteRule ^keuangan-customer-payment$ media.php?module=keuangan_customer_payment [QSA,L]
+RewriteRule ^tambah-keuangan-customer-payment-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_payment&act=tambah&no_invoice=$1&id=$2 [QSA,L]
+RewriteRule ^aksi-tambah-keuangan-customer-payment$ content/keuangan/customer/payment/aksi_payment.php?module=keuangan_customer_payment&act=input [QSA,L]
+RewriteRule ^edit-keuangan-customer-payment-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_payment&act=edit&no_payment=$1 [QSA,L]
+RewriteRule ^aksi-edit-keuangan-customer-payment$ content/keuangan/customer/payment/aksi_payment.php?module=keuangan_customer_payment&act=update [QSA,L]
+RewriteRule ^hapus-keuangan-customer-payment-([0-9a-zA-Z-]+)$ content/keuangan/customer/payment/aksi_payment.php?module=keuangan_customer_payment&act=delete&no_payment=$1 [QSA,L]
+RewriteRule ^view-keuangan-customer-payment-([0-9a-zA-Z-]+)$ media.php?module=keuangan_customer_payment&act=view&no_payment=$1 [QSA,L]
+RewriteRule ^cetak-keuangan-customer-payment-([0-9a-zA-Z-]+)$ content/keuangan/customer/payment/cetak_payment.php?no_payment=$1 [QSA,L]
+
+
+RewriteRule ^jadwal$ media.php?module=jadwal [QSA,L]
+RewriteRule ^tambah-jadwal$ media.php?module=jadwal&act=tambah [QSA,L]
+RewriteRule ^tambah-jadwal-pasien-([0-9a-zA-Z-]+)$ media.php?module=jadwal&act=tambahbaru&no_rm=$1 [QSA,L]
+RewriteRule ^aksi-tambah-jadwal$ content/jadwal/aksi_jadwal.php?module=jadwal&act=input [QSA,L]
+RewriteRule ^edit-jadwal-([0-9a-zA-Z-]+)$ media.php?module=jadwal&act=edit&id=$1 [QSA,L]
+RewriteRule ^aksi-edit-jadwal$ content/jadwal/aksi_jadwal.php?module=jadwal&act=update [QSA,L]
+RewriteRule ^aksi-hapus-jadwal-([0-9a-zA-Z-]+)$ content/jadwal/aksi_jadwal.php?module=jadwal&act=delete&id=$1 [QSA,L]
+RewriteRule ^jadwal-daftar-antrian-([0-9a-zA-Z-]+)$ media.php?module=jadwal&act=daftarantrian&id=$1 [QSA,L]
+RewriteRule ^aksi-tambah-antrian-jadwal$ content/jadwal/aksi_jadwal.php?module=jadwal&act=tambahantrian [QSA,L]
+
+
+
+RewriteRule ^lab-order$  media.php?module=laborder [QSA,L]
+
+RewriteRule ^view-lab-order-([0-9a-zA-Z-]+)$  media.php?module=laborder&act=view&id=$1 [QSA,L]
+
+RewriteRule ^hapus-track-lab-order-([0-9a-zA-Z-]+)$ media.php?module=laborder&act=hapus&id=$1 [QSA,L]
+
+RewriteRule ^cari-lab-order$  media.php?module=laborder&act=cari [QSA,L]
+
+
+RewriteRule ^lab-hasil$ media.php?module=labhasil [QSA,L]
+RewriteRule ^hapus-track-lab-hasil-([0-9a-zA-Z-]+)$ media.php?module=labhasil&act=hapus&id=$1 [QSA,L]
+RewriteRule ^view-lab-hasil-([0-9a-zA-Z-]+)$  media.php?module=labhasil&act=view&id=$1 [QSA,L]
+
+
+RewriteRule ^jenis-pemeriksaan$  media.php?module=jenis_pemeriksaan [QSA,L]
+RewriteRule ^data-pasien$  media.php?module=laporan_data_pasien [QSA,L]
+RewriteRule ^laporan-pasien$  media.php?module=laporan_pasien [QSA,L]
+RewriteRule ^laporan-rawat-jalan$  media.php?module=laporan_rawat_jalan [QSA,L]
+RewriteRule ^laporan-fee-dokter$  media.php?module=laporan_fee_dokter [QSA,L]
+RewriteRule ^laporan-prb$  media.php?module=laporan_prb [QSA,L]
+RewriteRule ^settings_klinik$ media.php?module=settings_klinik [QSA,L]
+
+RewriteRule ^pasien-hasillab$ content/pasien/hasillab/pasien_hasillab.php [QSA,L]
+RewriteRule ^data-pasien-hasillab$ content/pasien/hasillab/aksi_hasillab_pasien.php?module=hasillab&act=data [QSA,L]
+RewriteRule ^edit-pasien-hasillab$ content/pasien/hasillab/aksi_hasillab_pasien.php?module=hasillab&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-hasillab$ content/pasien/hasillab/aksi_hasillab_pasien.php?module=hasillab&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-hasillab$ content/pasien/hasillab/aksi_hasillab_pasien.php?module=hasillab&act=delete [QSA,L]
+RewriteRule ^view-pasien-hasillab$ content/pasien/hasillab/aksi_hasillab_pasien.php?module=hasillab&act=view [QSA,L]
+
+
+
+
+RewriteRule ^import-pasien$  media.php?module=import [QSA,L] 
+
+RewriteRule ^analisis-kunjungan$  media.php?module=analisis_kunjungan [QSA,L]
+RewriteRule ^analisis-pasien$  media.php?module=analisis_pasien [QSA,L]
+
+RewriteRule ^cetak-gelang-pasien-([0-9a-zA-Z-]+)$ content/pasien/cetak_gelang_pasien.php?no_rm=$1 [QSA,L]
+RewriteRule ^cetak-kartu-pasien-([0-9a-zA-Z-]+)$ content/pasien/cetak_kartu_pasien.php?no_rm=$1 [QSA,L]
+RewriteRule ^cetak-label-lab-pasien-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$ content/pasien/cetak_label_lab_pasien.php?no_rm=$1&no_antrian=$2 [QSA,L]
+
+
+RewriteRule ^aksi-import$  media.php?module=import_data [QSA,L]
+
+RewriteRule ^resep-pasien$  content/pasien/resep/resep_pasien.php [QSA,L]
+
+RewriteRule ^resep-pasien1-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$  content/pasien/resep/resep_pasien.php?id_pasien=$1&id_kunjungan=$2 [QSA,L]
+
+
+RewriteRule ^aksi-tambah-resep$ content/pasien/resep/aksi.php [QSA,L]
+RewriteRule ^form-tambah-pasien-resep$ content/pasien/resep/tambah_resep.php [QSA,L]
+RewriteRule ^form-update-pasien-resep$ content/pasien/resep/aksi_resep_pasien.php?module=resep&act=editform [QSA,L]
+RewriteRule ^aksi-pasien-resep$ content/pasien/resep/save_pasien_resep.php [QSA,L]
+RewriteRule ^aksi-hapus-pasien-resep$ content/pasien/resep/hapus_resep.php [QSA,L]
+
+RewriteRule ^inventori-stok-adjustment$ media.php?inventori=stok_adjustment [QSA,L]
+RewriteRule ^inventori-add-adjustment$ media.php?inventori=stok_adjustment&modul=new [QSA,L]
+RewriteRule ^proses-hapus-stok-adj-([0-9a-zA-Z-]+)$ media.php?inventori=stok_adjustment&modul=aksi&id=$1 [QSA,L]
+RewriteRule ^view-stok-adj-([0-9a-zA-Z-]+)$ media.php?inventori=stok_adjustment&modul=view&id=$1 [QSA,L]
+
+
+RewriteRule ^inventori-stok-balanced$ media.php?inventori=stok_saat_ini [QSA,L]
+RewriteRule ^inventori-stok-pergerakan$ media.php?inventori=stok_bergerak [QSA,L]
+RewriteRule ^inventori-stok-buka$ media.php?inventori=stok_buka [QSA,L]
+RewriteRule ^inventori-stok-penyesuaian$ media.php?inventori=stok_penyesuaian [QSA,L]
+
+
+RewriteRule ^inventori-stok-mutasi$ media.php?inventori=stok_mutasi [QSA,L]
+RewriteRule ^inventori-add-mutasi$ media.php?inventori=stok_mutasi&modul=new [QSA,L]
+RewriteRule ^proses-stok-trf-([0-9a-zA-Z-]+)$ media.php?inventori=stok_mutasi&modul=aksi&proses=by&id=$1 [QSA,L]
+RewriteRule ^proses-hapus-stok-trf-([0-9a-zA-Z-]+)$ media.php?inventori=stok_mutasi&modul=aksi&id=$1 [QSA,L]
+RewriteRule ^proses-edit-trf-([0-9a-zA-Z-]+)$ media.php?inventori=stok_mutasi&modul=update&id=$1 [QSA,L]
+RewriteRule ^view-stok-trf-([0-9a-zA-Z-]+)$ media.php?inventori=stok_mutasi&modul=view&id=$1 [QSA,L]
+
+
+RewriteRule ^inventori-grn$ media.php?inventori=terimabarang [QSA,L]
+RewriteRule ^view-grn-([0-9a-zA-Z-]+)$ media.php?inventori=terimabarang&modul=view&id=$1 [QSA,L]
+
+RewriteRule ^inventori-supplier-po$ media.php?inventori=po [QSA,L]
+RewriteRule ^inventori-quotation$ media.php?inventori=quotation [QSA,L]
+RewriteRule ^inventori-rq$ media.php?inventori=rq [QSA,L]
+RewriteRule ^inventori-kembali$ media.php?inventori=retur [QSA,L]
+
+RewriteRule ^rujukan-laboratorium$ media.php?module=rujukan_laboratorium [QSA,L]
+RewriteRule ^tambah-rujukan-laboratorium$ media.php?module=rujukan_laboratorium&act=tambah [QSA,L]
+RewriteRule ^update-rujukan-laboratorium-([0-9a-zA-Z-]+)$ media.php?module=rujukan_laboratorium&act=update&id=$1 [QSA,L]
+
+RewriteRule ^rujukan-diterima$ media.php?module=rujukan_diterima [QSA,L]
+
+RewriteRule ^pasien-kesimpulan-saran$ content/pasien/kesimpulan_saran/kesimpulan.php [QSA,L]
+
+RewriteRule ^form-pemeriksaan$ content/pasien/form/form.php [QSA,L]
+RewriteRule ^form-pemeriksaan-add$ content/pasien/form/tambah.php [QSA,L]
+RewriteRule ^form-pemeriksaan-save$ content/pasien/form/simpan.php [QSA,L]
+
+
+RewriteRule ^pasien-pemeriksaan-fisik$ content/pasien/hasilfisik/pasien_hasilfisik.php [QSA,L]
+RewriteRule ^view-pasien-hasilfisik$ content/pasien/hasilfisik/aksi_hasilfisik_pasien.php?module=hasillab&act=view [QSA,L]
+
+RewriteRule ^pasien-surat-sehat$ content/pasien/dokumen/surat_sehat/daftarSuratSehat.php [QSA,L]
+RewriteRule ^form-tambah-pasien-surat-sehat$ content/pasien/dokumen/surat_sehat/tambah_surat_pasien.php [QSA,L]
+
+RewriteRule ^pasien-surat-sakit$ content/pasien/dokumen/surat_sakit/daftarSuratSakit.php [QSA,L]
+RewriteRule ^form-tambah-pasien-surat-sakit$ content/pasien/dokumen/surat_sakit/tambah_surat_pasien_sakit.php [QSA,L]
+
+RewriteRule ^pasien-bebas-narkoba$ content/pasien/dokumen/surat_bebas_narkoba/daftarSuratBebasNarkoba.php [QSA,L]
+RewriteRule ^form-tambah-bebas-narkoba$ content/pasien/dokumen/surat_bebas_narkoba/tambah_surat_bebas_narkoba.php [QSA,L]
+
+RewriteRule ^pasien-rujukan$ content/pasien/dokumen/surat_rujukan/daftar_surat_rujukan.php [QSA,L]
+RewriteRule ^form-tambah-pasien-rujukan$ content/pasien/dokumen/surat_rujukan/tambah_surat_rujukan.php [QSA,L]
+
+RewriteRule ^pasien-inform$ content/pasien/dokumen/inform_consent/daftar_inform_consent.php [QSA,L]
+RewriteRule ^form-tambah-pasien-inform$ content/pasien/dokumen/inform_consent/tambah_inform_consent.php [QSA,L]
+
+RewriteRule ^uploadImage$ content/pasien/image_pemeriksaan/daftar_image_pemeriksaan.php [QSA,L]
+RewriteRule ^form-tambah-image-pemeriksaan$ content/pasien/image_pemeriksaan/tambah_image_pemeriksaan.php [QSA,L]
+
+RewriteRule ^catatResep$ content/pasien/catatresep/catatResep.php [QSA,L]
+RewriteRule ^listResep$ content/pasien/catatresep/listResep.php [QSA,L]
+
+
+RewriteRule ^ambil-sampel$ content/pasien/sampel/data.php [QSA,L]
+RewriteRule ^form-([0-9a-zA-Z-]+)$ media.php?module=form&id=$1 [QSA,L]
+
+RewriteRule ^lis$ media.php?module=lis [QSA,L]
+
+RewriteRule ^alat-bantu$ media.php?module=alat_bantu [QSA,L]
+RewriteRule ^tambah-alat-bantu$ content/alat_bantu/aksi_alat_bantu.php?module=alat_bantu&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-alat-bantu$ content/alat_bantu/aksi_alat_bantu.php?module=alat_bantu&act=input [QSA,L]
+RewriteRule ^edit-alat-bantu$ content/alat_bantu/aksi_alat_bantu.php?module=alat_bantu&act=edit [QSA,L]
+RewriteRule ^aksi-edit-alat-bantu$ content/alat_bantu/aksi_alat_bantu.php?module=alat_bantu&act=update [QSA,L]
+RewriteRule ^aksi-hapus-alat-bantu-([0-9a-zA-Z-]+)$ content/alat_bantu/aksi_alat_bantu.php?module=alat_bantu&act=delete&id=$1 [QSA,L]
+
+RewriteRule ^sync$ media.php?module=sync [QSA,L]
+
+RewriteRule ^maintenance$ maintenance.php [QSA,L]
+
+RewriteRule ^cetak-nomor-antrian$ cetak_nomor_antrian.php [QSA,L]
+
+RewriteRule ^ambil-gambar$ content/pasien/gambar/ambil_gambar.php [QSA,L]
+RewriteRule ^pasien-gambar$ content/pasien/gambar/pasien_gambar.php [QSA,L]
+
+RewriteRule ^data-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=data_gambar [QSA,L]
+RewriteRule ^aksi-tambah-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=delete [QSA,L]
+RewriteRule ^aksi-tampilkan-gambar$ content/pasien/gambar/aksi_gambar_pasien.php?module=gambar&act=tampilkan [QSA,L]
+
+
+RewriteRule ^catat-resep$  content/pasien/catatresep/catat_resep.php [QSA,L]
+RewriteRule ^tambah-catat-obat$ content/pasien/catatresep/tambah_catat_resep.php [QSA,L]
+RewriteRule ^aksi-tambah-catat-resep$ content/pasien/catatresep/aksi.php [QSA,L]
+RewriteRule ^catat-resep1-([0-9a-zA-Z-]+)-([0-9a-zA-Z-]+)$  content/pasien/catatresep/catat_resep.php?id=$1&id_kunjungan=$2 [QSA,L]
+RewriteRule ^getLabOrder/([0-9a-zA-Z-]+)$ data/api_get_labOrder.php?idKunjungan=$1 [QSA,L]
+
+
+RewriteRule ^pasien-keluhan$ content/pasien/keluhan/pasien_keluhan.php [QSA,L]
+RewriteRule ^data-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=data_peringatan [QSA,L]
+RewriteRule ^aksi-tambah-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=input [QSA,L]
+RewriteRule ^form-tambah-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=inputform [QSA,L]
+RewriteRule ^form-edit-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=editform [QSA,L]
+RewriteRule ^aksi-edit-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=update [QSA,L]
+RewriteRule ^aksi-stop-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=stop [QSA,L]
+RewriteRule ^aksi-hapus-pasien-keluhan$ content/pasien/peringatan/aksi_peringatan_pasien.php?module=peringatan&act=delete [QSA,L]
+
+
+RewriteRule ^form-update-catat-resep$ content/pasien/catatresep/aksi_resep_pasien.php?module=resep&act=editform [QSA,L]
+RewriteRule ^aksi-catat-resep$ content/pasien/catatresep/save_pasien_resep.php [QSA,L]
+RewriteRule ^aksi-hapus-catat-resep$ content/pasien/catatresep/hapus_resep.php [QSA,L]
+
+RewriteRule ^load-resep$ content/pasien/resep/load.php [QSA,L]
+
+
+RewriteRule ^pasien-diagnosa$ content/pasien/diagnosa/pasien_diagnosa.php [QSA,L]
+RewriteRule ^data-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=data_diagnosa [QSA,L]
+RewriteRule ^aksi-tambah-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=input [QSA,L]
+RewriteRule ^aksi-tambah-pesan-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=inputandiagnosa [QSA,L]
+RewriteRule ^form-tambah-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=hapus [QSA,L]
+RewriteRule ^data-pasien-diagnosa1$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=data [QSA,L]
+
+RewriteRule ^aksi-view-pasien-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=view [QSA,L]
+RewriteRule ^data-diagnosa$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=data_diagnosa [QSA,L]
+RewriteRule ^aksi-hapus-pasien-diagnosa-detail$ content/pasien/diagnosa/aksi_diagnosa_pasien.php?module=diagnosa&act=delete [QSA,L]
+
+
+RewriteRule ^pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/pasien_diagnosa.php [QSA,L]
+RewriteRule ^aksi-hapus-pasien-diagnosa-detail-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=delete [QSA,L]
+
+RewriteRule ^data-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=data_diagnosa [QSA,L]
+
+RewriteRule ^aksi-tambah-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=input [QSA,L]
+RewriteRule ^aksi-tambah-pesan-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=inputandiagnosa [QSA,L]
+RewriteRule ^form-tambah-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=inputform [QSA,L]
+RewriteRule ^edit-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=edit [QSA,L]
+RewriteRule ^aksi-edit-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=update [QSA,L]
+RewriteRule ^aksi-hapus-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=hapus [QSA,L]
+RewriteRule ^data-pasien-diagnosa1-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=data [QSA,L]
+
+RewriteRule ^aksi-view-pasien-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=view [QSA,L]
+RewriteRule ^data-diagnosa-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=data_diagnosa [QSA,L]
+RewriteRule ^aksi-hapus-pasien-diagnosa-detail-icpc$ content/pasien/diagnosa_icpc/aksi_diagnosa_pasien.php?module=diagnosa&act=delete [QSA,L]
+
+
+RewriteRule ^pasien-tindak-lanjut$ content/pasien/tindak_lanjut/pasien_tindak_lanjut.php [QSA,L]
+
+RewriteRule ^dokter$ media.php?content=dokter [QSA,L]
+
+
+RewriteRule ^list_tindakan$ data/list_tindakan.php [QSA,L]
+
+Options All -Indexes
+
+</IfModule>

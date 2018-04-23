@@ -1,0 +1,20 @@
+ SELECT a.id_unit,
+    a.id_departemen,
+    a.availablqty AS availableqty,
+    a.availablecost,
+    inv_nama_brand.nama,
+    inv_inventori.id,
+    inv_inventori.code,
+    inv_inventori.id_satuan,
+    inv_satuan.nama AS baseuom
+   FROM ( SELECT DISTINCT v.id_unit,
+            v.id_departemen,
+            v.id_inv,
+            sum(v.qtyin - v.qty_out::numeric) AS availablqty,
+            sum(v.costin - v.cost_out) AS availablecost
+           FROM view_inventoriavailablebatch v
+          GROUP BY v.id_unit, v.id_departemen, v.id_inv) a
+     LEFT JOIN inv_inventori ON inv_inventori.id = a.id_inv
+     LEFT JOIN inv_nama_brand ON inv_nama_brand.id = inv_inventori.id_brand
+     LEFT JOIN inv_satuan ON inv_satuan.id = inv_inventori.id_satuan
+  GROUP BY a.id_unit, a.id_departemen, a.availablqty, a.availablecost, inv_nama_brand.nama, inv_inventori.id, inv_inventori.code, inv_inventori.id_satuan, inv_satuan.nama;

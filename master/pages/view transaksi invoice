@@ -1,0 +1,19 @@
+SELECT transaksi_invoice_detail.*, tindakan.nama 
+FROM transaksi_invoice_detail
+LEFT JOIN pasien_tindakan ON (pasien_tindakan.id_pasien = transaksi_invoice_detail.id_pasien) AND (pasien_tindakan.id_kunjungan = transaksi_invoice_detail.id_kunjungan) AND 
+                         (pasien_tindakan.id_unit = transaksi_invoice_detail.id_unit)  
+                         LEFT JOIN tindakan on tindakan.id=pasien_tindakan.id_tindakan
+WHERE  transaksi_invoice_detail.jenis = 'BT' and transaksi_invoice_detail.id_invoice >0
+UNION
+SELECT transaksi_invoice_detail.*, pasien_resep.nama_brand as nama
+FROM transaksi_invoice_detail
+INNER JOIN pasien_resep ON (pasien_resep.id_pasien = transaksi_invoice_detail.id_pasien) AND (pasien_resep.id_kunjungan = transaksi_invoice_detail.id_kunjungan) AND 
+                         (pasien_resep.id_unit = transaksi_invoice_detail.id_unit) 
+WHERE  transaksi_invoice_detail.jenis = 'O'  and transaksi_invoice_detail.id_invoice >0
+UNION
+SELECT transaksi_invoice_detail.*, lab_analysis.nama 
+FROM transaksi_invoice_detail
+INNER JOIN pasien_laborder ON (pasien_laborder.id_pasien = transaksi_invoice_detail.id_pasien) AND (pasien_laborder.id_kunjungan = transaksi_invoice_detail.id_kunjungan) AND 
+                         (pasien_laborder.id_unit = transaksi_invoice_detail.id_unit)
+                         LEFT JOIN lab_analysis on lab_analysis.id=pasien_laborder.id_unit_lab 
+WHERE  transaksi_invoice_detail.jenis = 'LO'  and transaksi_invoice_detail.id_invoice >0

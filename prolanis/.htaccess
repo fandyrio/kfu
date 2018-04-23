@@ -1,0 +1,78 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^directory/ - [L,R=404]
+
+RewriteRule ^client$ login.php
+RewriteRule ^cek-login$ cek_login.php
+RewriteRule ^keluar$ logout.php
+RewriteRule ^home$ media.php?module=home [QSA,L]
+RewriteRule ^404$ media.php?module=404 [QSA,L]
+
+RewriteRule ^activity-type$ media.php?module=activity_type [QSA,L]
+RewriteRule ^tambah-activity-type$ content/activity_type/aksi_activity_type.php?module=activity_type&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-activity-type$ content/activity_type/aksi_activity_type.php?module=activity_type&act=input [QSA,L]
+RewriteRule ^edit-activity-type$ content/activity_type/aksi_activity_type.php?module=activity_type&act=edit [QSA,L]
+RewriteRule ^aksi-edit-activity-type$ content/activity_type/aksi_activity_type.php?module=activity_type&act=update [QSA,L]
+RewriteRule ^aksi-hapus-activity-type-([0-9a-zA-Z-]+)$ content/activity_type/aksi_activity_type.php?module=activity_type&act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^crm-status$ media.php?module=crm_status [QSA,L]
+RewriteRule ^tambah-crm-status$ content/crm_status/aksi_crm_status.php?module=crm_status&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-crm-status$ content/crm_status/aksi_crm_status.php?module=crm_status&act=input [QSA,L]
+RewriteRule ^edit-crm-status$ content/crm_status/aksi_crm_status.php?module=crm_status&act=edit [QSA,L]
+RewriteRule ^aksi-edit-crm-status$ content/crm_status/aksi_crm_status.php?module=crm_status&act=update [QSA,L]
+RewriteRule ^aksi-hapus-crm-status-([0-9a-zA-Z-]+)$ content/crm_status/aksi_crm_status.php?module=crm_status&act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^transaksi-prospek$ media.php?module=transaksi_prospek [QSA,L]
+
+
+RewriteRule ^transaksi-target$ media.php?module=transaksi_target [QSA,L]
+RewriteRule ^tambah-transaksi-target$ content/transaksi_target/aksi_transaksi_target.php?module=transaksi_target&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-transaksi-target$ content/transaksi_target/aksi_transaksi_target.php?module=transaksi_target&act=input [QSA,L]
+RewriteRule ^edit-transaksi-target$ content/transaksi_target/aksi_transaksi_target.php?module=transaksi_target&act=edit [QSA,L]
+RewriteRule ^aksi-edit-transaksi-target$ content/transaksi_target/aksi_transaksi_target.php?module=transaksi_target&act=update [QSA,L]
+RewriteRule ^aksi-hapus-transaksi-target-([0-9a-zA-Z-]+)$ content/transaksi_target/aksi_transaksi_target.php?module=transaksi_target&act=delete&id=$1 [QSA,L]
+
+
+RewriteRule ^target-realisasi$ media.php?module=target_realisasi [QSA,L]
+
+
+RewriteRule ^mcu-perusahaan$ media.php?module=mcu_perusahaan [QSA,L]
+RewriteRule ^view-mcu-perusahaan-([0-9a-zA-Z-]+)$ media.php?module=mcu_perusahaan&act=view&id=$1 [QSA,L]
+
+RewriteRule ^mcu-penawaran$ media.php?module=mcu_penawaran [QSA,L]
+
+
+RewriteRule ^mcu-jadwal$ media.php?module=mcu_jadwal [QSA,L]
+RewriteRule ^selesai-mcu-jadwal$ content/mcu/jadwal/aksi_jadwal.php?module=mcu_jadwal&act=selesai [QSA,L]
+RewriteRule ^aksi-selesai-mcu-jadwal$ content/mcu/jadwal/aksi_jadwal.php?module=mcu_jadwal&act=aksiselesai [QSA,L]
+
+
+RewriteRule ^billing$ media.php?module=billing [QSA,L]
+
+
+RewriteRule ^billing-klaim$ media.php?module=billing_klaim [QSA,L]
+
+
+RewriteRule ^billing-invoice$ media.php?module=billing_invoice [QSA,L]
+
+
+RewriteRule ^billing-pembayaran$ media.php?module=billing_pembayaran [QSA,L]
+
+RewriteRule ^tambah-jadwal-mcu$ media.php?jadwal=mcu&modul=tambah [QSA,L]
+RewriteRule ^edit-jadwal-mcu-([0-9a-zA-Z-]+)$ media.php?jadwal=mcu&modul=update&id=$1 [QSA,L]
+RewriteRule ^simpan-jadwal-mcu$ media.php?jadwal=mcu&modul=simpan&act=baru [QSA,L]
+RewriteRule ^update-jadwal-mcu$ media.php?jadwal=mcu&modul=simpan&act=edit [QSA,L]
+
+RewriteRule ^laporan$ media.php?module=laporan [QSA,L]
+RewriteRule ^tambah-laporan$ content/laporan/aksi_laporan.php?module=laporan&act=tambah [QSA,L]
+RewriteRule ^aksi-tambah-laporan$ content/laporan/aksi_laporan.php?module=laporan&act=input [QSA,L]
+RewriteRule ^edit-laporan$ content/laporan/aksi_laporan.php?module=laporan&act=edit [QSA,L]
+RewriteRule ^aksi-edit-laporan$ content/laporan/aksi_laporan.php?module=laporan&act=update [QSA,L]
+RewriteRule ^aksi-hapus-laporan-([0-9a-zA-Z-]+)$ content/laporan/aksi_laporan.php?module=laporan&act=delete&id=$1 [QSA,L]
+
+Options All -Indexes
+
+</IfModule>
